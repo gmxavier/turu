@@ -296,7 +296,7 @@ def moros_oppelt(K, tau, theta,
     --------
 
     >>> moros_oppelt(K=1, tau=10, theta=3)
-
+    [2.666666666666667, 0.29629629629629634]
 
     Reference
     ----------
@@ -354,7 +354,7 @@ def moros_rosenberg(K, tau, theta,
     --------
 
     >>> moros_rosenberg(K=1, tau=10, theta=3)
-
+    [3.0333333333333337, 0.3063973063973065]
 
     Reference
     ----------
@@ -472,7 +472,7 @@ def fertik_sharpe(K, tau, theta,
     --------
 
     >>> fertik_sharpe(K=1, tau=10, theta=3)
-
+    [0.56, 0.08615384615384616]
 
     Reference
     ----------
@@ -523,7 +523,7 @@ def parr(K, tau, theta,
     --------
 
     >>> parr(K=1, tau=10, theta=3)
-
+    [3.0333333333333337, 0.3063973063973065]
 
     Reference
     ----------
@@ -581,7 +581,7 @@ def sakai(K, tau, theta,
     --------
 
     >>> sakai(K=1, tau=10, theta=3)
-
+    [4.136, 2.7573333333333334]
 
     Reference
     ----------
@@ -593,7 +593,7 @@ def sakai(K, tau, theta,
     Ki = Kp/(0.5*theta)
     return [Kp, Ki] 
 
-def borresesn_grindal(K, tau, theta, 
+def borresen_grindal(K, tau, theta, 
                       type_of_plant='FODT',
                       type_of_control='regulatory', 
                       type_of_controller='PI'):
