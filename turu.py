@@ -304,9 +304,15 @@ def moros_oppelt(K, tau, theta,
        Imperial College Press, 2009.
     '''    
     thetaovertau = theta/tau
-    Kp = 0.8/(K*thetaovertau)
-    Ki = Kp/(3*theta)
-    return [Kp, Ki]  
+    if type_of_controller == 'PI':    
+      Kp = 0.8/(K*thetaovertau)
+      Ki = Kp/(3*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 1.2/(K*thetaovertau)
+      Ki = Kp/(2*theta)
+      Kd = Kp*(0.42*theta)
+      return [Kp, Ki, Kd]       
 
 def moros_rosenberg(K, tau, theta, 
                     type_of_plant='FODT',
@@ -356,9 +362,15 @@ def moros_rosenberg(K, tau, theta,
        Imperial College Press, 2009.
     '''    
     thetaovertau = theta/tau
-    Kp = 0.91/(K*thetaovertau)
-    Ki = Kp/(3.3*theta)
-    return [Kp, Ki] 
+    if type_of_controller == 'PI':
+      Kp = 0.91/(K*thetaovertau)
+      Ki = Kp/(3.3*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 1.2/(K*thetaovertau)
+      Ki = Kp/(2.0*theta)
+      Kd = Kp*(0.44*theta)
+      return [Kp, Ki, Kd] 
 
 def cohen_coon(K, tau, theta, 
                type_of_plant='FODT',
@@ -419,3 +431,650 @@ def cohen_coon(K, tau, theta,
         Ki = Kp/((theta*(32 + 6*(theta/tau))/(theta*(13 + 8*(theta/tau)))))
         Kd = Kp*(4/(theta*(11 + 2*(theta/tau))))
         return [Kp, Ki, Kd]    
+
+def fertik_sharpe(K, tau, theta, 
+                  type_of_plant='FODT',
+                  type_of_control='regulatory', 
+                  type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Fertik and Sharpe (1979).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> fertik_sharpe(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    Kp = 0.56/K
+    Ki = Kp/(0.65*tau)
+    return [Kp, Ki]
+
+def parr(K, tau, theta, 
+         type_of_plant='FODT',
+         type_of_control='regulatory', 
+         type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Parr (1989).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> parr(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    if type_of_controller == 'PI':
+      Kp = 0.91/(K*thetaovertau)
+      Ki = Kp/(3.3*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 1.25/(K*thetaovertau)
+      Ki = Kp/(2.5*theta)
+      Kd = Kp*(0.4*theta)
+      return [Kp, Ki, Kd] 
+
+def sakai(K, tau, theta, 
+          type_of_plant='FODT',
+          type_of_control='regulatory', 
+          type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Sakai et al. (1989).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> sakai(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 1.2408/(K*thetaovertau)
+    Ki = Kp/(0.5*theta)
+    return [Kp, Ki] 
+
+def borresesn_grindal(K, tau, theta, 
+                      type_of_plant='FODT',
+                      type_of_control='regulatory', 
+                      type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Borresen and Grindal (1990).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> borresen_grindal(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    if type_of_controller == 'PI':
+      Kp = 1.0/(K*thetaovertau)
+      Ki = Kp/(3.0*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 1.0/(K*thetaovertau)
+      Ki = Kp/(3.0*theta)
+      Kd = Kp*(0.5*theta)
+      return [Kp, Ki, Kd]     
+
+def klein(K, tau, theta, 
+          type_of_plant='FODT',
+          type_of_control='regulatory', 
+          type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Klein et al. (1992).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> klein(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 0.28/(K*(thetaovertau + 0.1))
+    Ki = Kp/(0.53*tau)
+    return [Kp, Ki] 
+  
+def mcmillan(K, tau, theta, 
+            type_of_plant='FODT',
+            type_of_control='regulatory', 
+            type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of McMillan (1994).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> mcmillan(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = K/3
+    Ki = theta
+    return [Kp, Ki] 
+  
+def stclair(K, tau, theta, 
+            type_of_plant='FODT',
+            type_of_control='regulatory', 
+            type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of St. Clair (1997).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+    It's valid for theta/tau >= 0.33.
+
+    Example
+    --------
+
+    >>> stclair(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 0.333/(K*thetaovertau)
+    Ki = tau
+    return [Kp, Ki] 
+  
+def shinskey(K, tau, theta, 
+             type_of_plant='FODT',
+             type_of_control='regulatory', 
+             type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Shinskey (2000).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> shinskey(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 0.667/(K*thetaovertau)
+    Ki = Kp/(3.78*theta)
+    return [Kp, Ki] 
+  
+def liptak(K, tau, theta, 
+           type_of_plant='FODT',
+           type_of_control='regulatory', 
+           type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Liptak (2001).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> liptak(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    if type_of_controller == 'PI':
+      Kp = 0.95/(K*thetaovertau)
+      Ki = Kp/(4.0*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 0.85/(K*thetaovertau)
+      Ki = Kp/(1.6*theta)
+      Kd = Kp*(0.6*theta)
+      return [Kp, Ki]       
+  
+def chidambaram(K, tau, theta, 
+               type_of_plant='FODT',
+               type_of_control='regulatory', 
+               type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Chidambaram (2002).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> chidambaram(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    if type_of_controller == 'PI':
+      Kp = (1/K)*(0.4 + 0.665/thetaovertau)
+      Ki = Kp/(3.4*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = (1/K)*(0.45 + 1.8/thetaovertau)
+      Ki = Kp/(2.4*theta)
+      Kd = Kp*(0.38*theta)
+      return [Kp, Ki] 
+
+def faanes_skogestad(K, tau, theta, 
+                     type_of_plant='FODT',
+                     type_of_control='regulatory', 
+                     type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of Faanes and Skogestad (2004).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> faanes_skogestad(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 0.71/(K*thetaovertau)
+    Ki = Kp/(3.3*theta)
+    return [Kp, Ki] 
+  
+def pma(K, tau, theta, 
+       type_of_plant='FODT',
+       type_of_control='regulatory', 
+       type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rules of PMA (2006).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+
+
+    Example
+    --------
+
+    >>> pma(K=1, tau=10, theta=3)
+
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    Kp = 0.39/(K*thetaovertau)
+    Ki = Kp/(6.0*theta)
+    return [Kp, Ki] 
