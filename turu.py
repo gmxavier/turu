@@ -743,7 +743,7 @@ def mcmillan(K, tau, theta,
     --------
 
     >>> mcmillan(K=1, tau=10, theta=3)
-    [0.3333333333333333, 1]
+    [0.3333333333333333, 1.0]
 
     Reference
     ----------
@@ -752,7 +752,7 @@ def mcmillan(K, tau, theta,
     '''    
     thetaovertau = theta/tau
     Kp = K/3
-    Ki = Kp*theta
+    Ki = Kp/theta
     return [Kp, Ki] 
   
 def stclair(K, tau, theta, 
