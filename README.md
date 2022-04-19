@@ -1,10 +1,10 @@
 # turu
 
-## Introduction
+## Introduction 🎯
 
 A Python collection of PID tuning rules.
 
-## Instalation
+## Instalation ⏯️
 
 This is a nano project (at least for now), so the easier way to install it is running the code below:
 
@@ -15,18 +15,18 @@ This is a nano project (at least for now), so the easier way to install it is ru
         f.write(r.text) 
     from turu import *
 
-## Usage
+## Usage 🎛️
 
 Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128). What would be the PID controller settings using the Ziegler Nichols rule?
 
     Kp, Ki, Kd = ziegler_nichols(K=1.25, tau=4, theta=0.9, type_of_controller='PID'); [Kp, Kp/Ki, Kd/Kp]
     [4.266666666666667, 1.8, 0.45]
 
-## Contributing
+## Contributing 🧱
 
-You have the following options to contribute, pick one!
+If you ❤️ Python and know a PID tuning rule that is not [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), please code it and make a PR.
 
-1. If you ❤️ Python and know a PID tuning rule that is not [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), please code it and make a PR.
-2. If you ❤️ Python and want to test a PID tuning rule that is [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), but not in `turu` yet, please code it and make a PR.
-3. If you ❤️ this project and found an error, please open an Issue.
+If you ❤️ Python and want to test a PID tuning rule that is [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), but not in `turu` yet, please code it and make a PR.
+
+If you ❤️ this project and found an error, please open an Issue.
 
