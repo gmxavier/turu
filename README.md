@@ -24,4 +24,6 @@ Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/item
 
 ## Contributing
 
-If you ❤️ Python and know a PID tuning rule that is not [here](), please code it and make a PR.
+You have the following options to contribute, pick one!
+
+1. If you ❤️ Python and know a PID tuning rule that is not [here](), please code it and make a PR.
