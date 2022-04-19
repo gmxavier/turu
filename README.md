@@ -17,7 +17,7 @@ This is a nano project (at least for now), so the easier way to use it is runnin
 
 ## Usage
 
-Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128)).
+Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128).
 
 What would be the PID controller settings using the Ziegler Nichols rule?
 
