@@ -6,7 +6,7 @@ A Python collection of PID tuning rules.
 
 ## Instalation
 
-This is a nano project (at least for now), so the easier way to use it is running the code below:
+This is a nano project (at least for now), so the easier way to install it is running the code below:
 
     from requests import get   
     url = 'https://raw.githubusercontent.com/gmxavier/turu/main/turu.py' 
@@ -21,3 +21,7 @@ Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/item
 
     Kp, Ki, Kd = ziegler_nichols(K=1.25, tau=4, theta=0.9, type_of_controller='PID'); [Kp, Kp/Ki, Kd/Kp]
     [4.266666666666667, 1.8, 0.45]
+
+## Contributing
+
+If you ❤️ Python and know a PID tuning rule that is not [here](), please code it and make a PR.
