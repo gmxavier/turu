@@ -633,7 +633,7 @@ def borresen_grindal(K, tau, theta,
     --------
 
     >>> borresen_grindal(K=1, tau=10, theta=3)
-
+    [3.3333333333333335, 0.3703703703703704]
 
     Reference
     ----------
@@ -691,7 +691,7 @@ def klein(K, tau, theta,
     --------
 
     >>> klein(K=1, tau=10, theta=3)
-
+    [0.7000000000000001, 0.1320754716981132]
 
     Reference
     ----------
@@ -704,9 +704,9 @@ def klein(K, tau, theta,
     return [Kp, Ki] 
   
 def mcmillan(K, tau, theta, 
-            type_of_plant='FODT',
-            type_of_control='regulatory', 
-            type_of_controller='PI'):
+             type_of_plant='FODT',
+             type_of_control='regulatory', 
+             type_of_controller='PI'):
     r'''Returns the PI controller parameters from the rules of McMillan (1994).
 
     Parameters
@@ -743,7 +743,7 @@ def mcmillan(K, tau, theta,
     --------
 
     >>> mcmillan(K=1, tau=10, theta=3)
-
+    [0.3333333333333333, 1]
 
     Reference
     ----------
@@ -752,7 +752,7 @@ def mcmillan(K, tau, theta,
     '''    
     thetaovertau = theta/tau
     Kp = K/3
-    Ki = theta
+    Ki = Kp*theta
     return [Kp, Ki] 
   
 def stclair(K, tau, theta, 
