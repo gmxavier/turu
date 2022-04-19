@@ -2,7 +2,7 @@
 
 ## Introduction 🎯
 
-A Python collection of PID tuning rules.
+A library of PID tuning rules.
 
 ## Instalation ⏯️
 
@@ -28,5 +28,4 @@ If you ❤️ Python and know a PID tuning rule that is not [here](http://cyxtp.
 
 If you ❤️ Python and want to test a PID tuning rule that is [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), but not in `turu` yet, please code it and make a PR.
 
-If you ❤️ this project and found an error, please open an Issue.
-
+If you ❤️ this project and found an bug, need a feature or have a suggestion, we kindly ask you to open an Issue.
