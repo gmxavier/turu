@@ -17,7 +17,7 @@ This is a nano project (at least for now), so the easier way to use it is runnin
 
 ## Usage
 
-Assuming a $G_{PRC} = G_a G_p G_m$ approximated as a FOLPD (first order lag plus delay) with $K = 1.15$, $\tau = 4$ and $\theta = 0.9$ (see Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128)).
+Assuming a $$G_{PRC} = G_a G_p G_m$$ approximated as a FOLPD (first order lag plus delay) with $$K = 1.15$$, $$\tau = 4$$ and $$\theta = 0.9$$ (see Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128)).
 
 What would be the PID controller settings using the Ziegler Nichols rule?
 
