@@ -743,7 +743,7 @@ def mcmillan(K, tau, theta,
     --------
 
     >>> mcmillan(K=1, tau=10, theta=3)
-    [0.3333333333333333, 1.0]
+    [0.3333333333333333, 0.1111111111111111]
 
     Reference
     ----------
@@ -789,7 +789,7 @@ def stclair(K, tau, theta,
 
     Notes
     -----
-    It's valid for theta/tau >= 0.33.
+    Valid for theta/tau >= 0.33.
 
     Example
     --------
@@ -804,7 +804,7 @@ def stclair(K, tau, theta,
     '''    
     thetaovertau = theta/tau
     Kp = 0.333/(K*thetaovertau)
-    Ki = tau
+    Ki = Kp/tau
     return [Kp, Ki] 
   
 def shinskey(K, tau, theta, 
@@ -915,7 +915,7 @@ def liptak(K, tau, theta,
       Kp = 0.85/(K*thetaovertau)
       Ki = Kp/(1.6*theta)
       Kd = Kp*(0.6*theta)
-      return [Kp, Ki]       
+      return [Kp, Ki, Kd]       
   
 def chidambaram(K, tau, theta, 
                type_of_plant='FODT',
@@ -973,7 +973,7 @@ def chidambaram(K, tau, theta,
       Kp = (1/K)*(0.45 + 1.8/thetaovertau)
       Ki = Kp/(2.4*theta)
       Kd = Kp*(0.38*theta)
-      return [Kp, Ki] 
+      return [Kp, Ki, Kd] 
 
 def faanes_skogestad(K, tau, theta, 
                      type_of_plant='FODT',
@@ -1075,6 +1075,12 @@ def pma(K, tau, theta,
        Imperial College Press, 2009.
     '''    
     thetaovertau = theta/tau
-    Kp = 0.39/(K*thetaovertau)
-    Ki = Kp/(6.0*theta)
-    return [Kp, Ki] 
+    if type_of_controller == 'PI':
+      Kp = 0.39/(K*thetaovertau)
+      Ki = Kp/(6.0*theta)
+      return [Kp, Ki] 
+    if type_of_controller == 'PID':
+      Kp = 0.59/(K*thetaovertau)
+      Ki = Kp/(2.0*theta)
+      Kd = Kp*(2.0*theta)
+      return [Kp, Ki, Kd]       
