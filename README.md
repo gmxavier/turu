@@ -26,4 +26,7 @@ Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/item
 
 You have the following options to contribute, pick one!
 
-1. If you ❤️ Python and know a PID tuning rule that is not [here](), please code it and make a PR.
+1. If you ❤️ Python and know a PID tuning rule that is not [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), please code it and make a PR.
+2. If you ❤️ Python and want to test a PID tuning rule that is [here](http://cyxtp.ucoz.ru/pdf/Aidan_O_Dwyer_Handbook_of_PI_and_PID_Controller_Tuning_Rules.pdf), but not in `turu` yet, please code it and make a PR.
+3. If you ❤️ this project and found an error, please open an Issue.
+
