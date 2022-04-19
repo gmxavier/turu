@@ -1,7 +1,34 @@
-# turu.py - A Python collection of PID tuning rules
-# GMX, 17 April 2022
-#
-# This file contains a collection of PID tuning rules.
+# -*- coding: utf-8 -*-
+"""PID Tuning Rules Library (turu). A library of PID tuning rules.
+Copyright (C) 2022, Gilberto Xavier
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This module contains functions for PID controller settings.
+At present, this consists of several functions from this reference:
+
+O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+Imperial College Press, 2009.
+
+For reporting bugs, adding feature requests, or submitting pull requests,
+please use the `GitHub issue tracker <https://github.com/gmxavier/turu/>`.
+
+"""
 
 from numpy import interp
 
