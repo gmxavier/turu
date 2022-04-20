@@ -21,7 +21,7 @@ Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/item
 
     # Ziegler-Nichols tuning settings as gains for a PID controller and a FOLPD plant with K=1.25, tau=4 and theta=0.9
     Kp, Ki, Kd = ziegler_nichols(K=1.25, tau=4, theta=0.9, type_of_controller='PID')
-    # tuning settings as gain, integral time and derivative time
+    # tuning settings as proportional gain, integral time and derivative time
     [Kp, Kp/Ki, Kd/Kp]
     [4.266666666666667, 1.8, 0.45]
 
