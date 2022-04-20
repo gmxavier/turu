@@ -19,8 +19,7 @@ This is a nano project (at least for now), so the easier way to install it is ru
 
 Considering the Example 5.7A from [here](https://ia802909.us.archive.org/32/items/process-control-a-first-course-with-matlab/Process%20Control%20A%20First%20Course%20with%20MATLAB.pdf#page=128). What would be the PID controller settings using the Ziegler Nichols rule?
 
-    # Ziegler-Nichols tuning settings as gains for a PID controller and a FOLPD plant 
-    # with K=1.25, tau=4 and theta=0.9
+    # Ziegler-Nichols tuning settings as gains (proportional, integral and derivative)
     Kp, Ki, Kd = ziegler_nichols(K=1.25, tau=4, theta=0.9, type_of_controller='PID')
     # tuning settings as proportional gain, integral time and derivative time
     [Kp, Kp/Ki, Kd/Kp]
