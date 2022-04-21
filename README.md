@@ -6,7 +6,7 @@ A library of PID tuning rules.
 
 ## Instalation ⏯️
 
-This is a nano project (at least for now), so the easier way to install it is running the chunk of code below:
+This is a nano project yet, so you'll must run the chunk of code below to "install" it (at least for now).
 
     from requests import get   
     url = 'https://raw.githubusercontent.com/gmxavier/turu/main/turu.py' 
